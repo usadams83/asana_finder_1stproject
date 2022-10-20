@@ -14,9 +14,35 @@ poses = [{
     instruction: `stand on your head`
 }
 ]
+async function getPoses (){
+const poses = await fetch(`https://lightning-yoga-api.herokuapp.com/yoga_poses
+`, {
+  method: 'GET',
+})
+  .then((response) => response.json())
+  .then((result) => {
+    console.log(result.items)
 
+    let poses = result.items
 
-const currentPose = document.querySelector(".currentimage")
-currentPose.src = poses[0].src
+    const currentPose = document.querySelector(".currentimage")
+currentPose.src = poses[0].img_url
 const currentText = document.querySelector(".currenttext")
-currentText.innerText = poses[0].name
+currentText.innerText = poses[0].english_name
+const sanskritName = document.querySelector("#sanskritName")
+sanskritname.innerText = poses[0].sanskrit_name
+
+})
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+  return poses
+}
+poses = getPoses()
+console.log(getPoses())
+let poseIndex = 0
+
+
+function changePose(){
+    currentPose.src = poses[poseIndex]
+    }
