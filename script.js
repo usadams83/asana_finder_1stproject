@@ -1,6 +1,5 @@
 console.log(`working`)
-let posesArray = [
-]
+let posesArray = []
 
 function assignEventListener (){
     const currentPose = document.querySelector(".currentimage")
@@ -33,13 +32,11 @@ currentText.innerText = poses[0].english_name
 const sanskritName = document.querySelector("#sanskritName")
 sanskritname.innerText = poses[0].sanskrit_name
 
-//declaring index
 poses.map((pose,i)=>{
     posesArray.push(pose)
     const image = pose.img_url
     const newElement = `<li><img class="img${i} pose " src="${image}")></li>`
     document.querySelector(".allposes").innerHTML+=newElement
-    //defining the class using the index - assigning and querying by i
 })
 assignEventListener()
 
